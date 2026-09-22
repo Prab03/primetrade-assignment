@@ -19,25 +19,35 @@ export default function Login() {
   };
 
   return (
-    <div style={styles.container}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <input placeholder="Email" value={form.email}
-          onChange={e => setForm({ ...form, email: e.target.value })} style={styles.input} />
-        <input placeholder="Password" type="password" value={form.password}
-          onChange={e => setForm({ ...form, password: e.target.value })} style={styles.input} />
-        <button type="submit" style={styles.btn}>Login</button>
-        {msg && <p style={styles.msg}>{msg}</p>}
-      </form>
-      <p>Don't have an account? <a href="/">Register</a></p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-md p-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Welcome back</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            placeholder="Email"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+            className="px-4 py-2.5 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value={form.password}
+            onChange={e => setForm({ ...form, password: e.target.value })}
+            className="px-4 py-2.5 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button
+            type="submit"
+            className="mt-2 px-4 py-2.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors"
+          >
+            Login
+          </button>
+          {msg && <p className="text-sm text-red-600 text-center">{msg}</p>}
+        </form>
+        <p className="text-sm text-gray-500 text-center mt-6">
+          Don't have an account? <a href="/" className="text-indigo-600 font-medium hover:underline">Register</a>
+        </p>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: { maxWidth: '400px', margin: '100px auto', fontFamily: 'sans-serif' },
-  form:      { display: 'flex', flexDirection: 'column', gap: '12px' },
-  input:     { padding: '10px', fontSize: '14px', borderRadius: '6px', border: '1px solid #ccc' },
-  btn:       { padding: '10px', background: '#4f46e5', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer' },
-  msg:       { color: 'red' }
-};
